@@ -1,7 +1,8 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
-import FAQ from "@/components/FAQ";
+import Footer from "@/components/Footer";
+import WhyChooseUs from "@/components/WhyChooseUs";
 
 const Index = () => {
   return (
@@ -9,7 +10,8 @@ const Index = () => {
       <Header />
       <Hero />
       <Features />
-      <FAQ />
+      <WhyChooseUs />
+      <Footer />
     </div>
   );
 };
