@@ -11,6 +11,7 @@ const Index = () => {
       <Hero />
       <Features />
       <WhyChooseUs />
+      <FAQ />
       <Footer />
     </div>
   );
