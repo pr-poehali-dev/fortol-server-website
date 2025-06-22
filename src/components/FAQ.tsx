@@ -41,17 +41,17 @@ const FAQ = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             FAQ
           </h2>
-          <p className="text-blood-400 text-xl">Часто задаваемые вопросы</p>
+          <p className="text-green-400 text-xl">Часто задаваемые вопросы</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
           {faqItems.map((item, index) => (
             <Card
               key={index}
-              className="bg-slate-800 border-slate-700 hover:border-blood-600 transition-all duration-300 hover:shadow-lg"
+              className="bg-slate-800 border-slate-700 hover:border-green-600 transition-all duration-300 hover:shadow-lg"
             >
               <CardHeader>
-                <CardTitle className="text-blood-400 text-lg">
+                <CardTitle className="text-green-400 text-lg">
                   {item.question}
                 </CardTitle>
               </CardHeader>
