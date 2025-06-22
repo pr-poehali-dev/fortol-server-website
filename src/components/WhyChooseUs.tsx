@@ -3,43 +3,83 @@ import Icon from "@/components/ui/icon";
 const WhyChooseUs = () => {
   const advantages = [
     {
+      icon: "Users",
+      title: "Активное комьюнити",
+      description:
+        "У нас всегда живые и активные игроки! Здесь всегда кого-то видно и с кем-то говорить, играть, весело проводить время.",
+      size: "large",
+      color: "emerald",
+    },
+    {
+      icon: "Mic",
+      title: "Голосовой чат",
+      description: "От классической музыки до современных хитов",
+      size: "small",
+      color: "blue",
+    },
+    {
       icon: "Shield",
       title: "Стабильность",
-      description: "Собственное серверное оборудование с защитой от DDoS",
-      shape: "hexagon",
+      description:
+        "Наши серверы очень стабильные, благодаря новейшему серверному оборудованию от мощных процессоров Intel Xeon до высокоскоростной оперативной памяти и SSD дисков.",
+      size: "medium",
+      color: "purple",
     },
     {
-      icon: "Map",
-      title: "Кастомная генерация",
-      description: "Уникальные миры, созданные специально для нашего сервера",
-      shape: "diamond",
+      icon: "Wrench",
+      title: "Самоуправление",
+      description:
+        "Минимальное вмешательство администрации позволяет игрокам самостоятельно решать свои проблемы и конфликты, развивая навыки дипломатии.",
+      size: "large",
+      color: "green",
     },
     {
-      icon: "Globe",
-      title: "Система миров",
-      description: "Множество различных локаций для разных видов активности",
-      shape: "circle",
+      icon: "Zap",
+      title: "Долгий не решает",
+      description:
+        "Делаем так чтобы игрок не ждал решения своих вопросов месяцами, а получал ответ максимально быстро",
+      size: "medium",
+      color: "orange",
     },
     {
-      icon: "Users",
-      title: "Сплочённое комьюнити",
-      description: "Дружелюбное сообщество игроков и общие проекты",
-      shape: "octagon",
+      icon: "Code",
+      title: "Собственные разработки",
+      description:
+        "Уникальные плагины и модификации, созданные специально для нашего сервера",
+      size: "small",
+      color: "indigo",
     },
   ];
 
-  const getShapeClass = (shape: string) => {
-    switch (shape) {
-      case "hexagon":
-        return "clip-path-hexagon";
-      case "diamond":
-        return "clip-path-diamond transform rotate-45";
-      case "circle":
-        return "rounded-full";
-      case "octagon":
-        return "clip-path-octagon";
+  const getSizeClass = (size: string) => {
+    switch (size) {
+      case "large":
+        return "md:col-span-2 md:row-span-2 h-64 md:h-auto";
+      case "medium":
+        return "md:col-span-2 h-48";
+      case "small":
+        return "h-40";
       default:
-        return "rounded-2xl";
+        return "h-48";
+    }
+  };
+
+  const getColorClass = (color: string) => {
+    switch (color) {
+      case "emerald":
+        return "bg-gradient-to-br from-emerald-500 to-emerald-700 border-emerald-400/30";
+      case "blue":
+        return "bg-gradient-to-br from-blue-500 to-blue-700 border-blue-400/30";
+      case "purple":
+        return "bg-gradient-to-br from-purple-500 to-purple-700 border-purple-400/30";
+      case "green":
+        return "bg-gradient-to-br from-green-500 to-green-700 border-green-400/30";
+      case "orange":
+        return "bg-gradient-to-br from-orange-500 to-orange-700 border-orange-400/30";
+      case "indigo":
+        return "bg-gradient-to-br from-indigo-500 to-indigo-700 border-indigo-400/30";
+      default:
+        return "bg-gradient-to-br from-gray-500 to-gray-700 border-gray-400/30";
     }
   };
 
@@ -56,34 +96,32 @@ const WhyChooseUs = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-min">
           {advantages.map((advantage, index) => (
-            <div key={index} className="relative group">
-              <div
-                className={`
-                ${getShapeClass(advantage.shape)}
-                ${advantage.shape === "diamond" ? "w-64 h-64 mx-auto" : "w-full"}
-                bg-gray-800 border-4 border-red-600 hover:border-red-500
-                p-8 flex flex-col justify-center items-center text-center
-                shadow-xl hover:shadow-2xl transform hover:scale-105 
-                transition-all duration-300 cursor-pointer
-                ${advantage.shape === "diamond" ? "" : "min-h-[200px]"}
+            <div
+              key={index}
+              className={`
+                ${getSizeClass(advantage.size)}
+                ${getColorClass(advantage.color)}
+                rounded-2xl p-6 flex flex-col justify-center
+                border-2 shadow-xl hover:shadow-2xl
+                transform hover:scale-105 transition-all duration-300
+                cursor-pointer group
               `}
-              >
-                <div
-                  className={`${advantage.shape === "diamond" ? "transform -rotate-45" : ""} flex flex-col items-center`}
-                >
-                  <div className="w-16 h-16 bg-red-600/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4">
-                    <Icon
-                      name={advantage.icon as any}
-                      size={32}
-                      className="text-red-400"
-                    />
-                  </div>
-                  <h3 className="text-white font-bold text-xl mb-3 group-hover:text-gray-100">
+            >
+              <div className="flex items-start gap-4 h-full">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Icon
+                    name={advantage.icon as any}
+                    size={24}
+                    className="text-white"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-white font-bold text-lg mb-3 group-hover:text-gray-100">
                     {advantage.title}
                   </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed max-w-xs">
+                  <p className="text-white/90 text-sm leading-relaxed">
                     {advantage.description}
                   </p>
                 </div>
@@ -92,34 +130,6 @@ const WhyChooseUs = () => {
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        .clip-path-hexagon {
-          clip-path: polygon(
-            50% 0%,
-            100% 25%,
-            100% 75%,
-            50% 100%,
-            0% 75%,
-            0% 25%
-          );
-        }
-        .clip-path-diamond {
-          clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        }
-        .clip-path-octagon {
-          clip-path: polygon(
-            30% 0%,
-            70% 0%,
-            100% 30%,
-            100% 70%,
-            70% 100%,
-            30% 100%,
-            0% 70%,
-            0% 30%
-          );
-        }
-      `}</style>
     </section>
   );
 };
